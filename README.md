@@ -14,8 +14,8 @@ This project involves a comprehensive analysis of Netflix's movies and TV shows 
 The data for this project is sourced from the Kaggle dataset:
 + [Movies & TV Shows Dataset](https://www.kaggle.com/datasets/shivamb/netflix-shows?resource=download)
 
+## Schema
 ```sql
-Schema
 DROP TABLE IF EXISTS netflix;
 CREATE TABLE netflix
 (
@@ -33,16 +33,19 @@ CREATE TABLE netflix
     description  VARCHAR(550)
 );
 ```
-Business Problems and Solutions
-1. Count the Number of Movies vs TV Shows
+### Business Problems and Solutions
+## 1. Count the Number of Movies vs TV Shows
+```sql
 SELECT 
     type,
     COUNT(*)
 FROM netflix
 GROUP BY 1;
-Objective: Determine the distribution of content types on Netflix.
+```
+**Objective:** Determine the distribution of content types on Netflix.
 
-2. Find the Most Common Rating for Movies and TV Shows
+## 2. Find the Most Common Rating for Movies and TV Shows
+```sql
 WITH RatingCounts AS (
     SELECT 
         type,
@@ -64,13 +67,16 @@ SELECT
     rating AS most_frequent_rating
 FROM RankedRatings
 WHERE rank = 1;
-Objective: Identify the most frequently occurring rating for each type of content.
+```
+**Objective:** Identify the most frequently occurring rating for each type of content.
 
-3. List All Movies Released in a Specific Year (e.g., 2020)
+## 3. List All Movies Released in a Specific Year (e.g., 2020)
+```sql
 SELECT * 
 FROM netflix
 WHERE release_year = 2020;
-Objective: Retrieve all movies released in a specific year.
+```
+**Objective:** Retrieve all movies released in a specific year.
 
 4. Find the Top 5 Countries with the Most Content on Netflix
 SELECT * 
